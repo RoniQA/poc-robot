@@ -1,14 +1,18 @@
 *** Settings ***
 Library    SeleniumLibrary
 
+*** Variables ***
+${URL}          https://www.saucedemo.com/
+${BROWSER}      chrome
+${OPTIONS}      --no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile
+
 *** Keywords ***
 Abrir Navegador
     ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    --no-sandbox
-    Call Method    ${chrome_options}    add_argument    --disable-dev-shm-usage
-    Call Method    ${chrome_options}    add_argument    --disable-gpu
-    Call Method    ${chrome_options}    add_argument    --remote-debugging-port\=9222
-    Call Method    ${chrome_options}    add_argument    --user-data-dir\=/tmp/chrome-profile
+    @{option_list}=    Evaluate    """${OPTIONS}""".split(';')
+    FOR    ${option}    IN    @{option_list}
+        Call Method    ${chrome_options}    add_argument    ${option}
+    END
     Create WebDriver    Chrome    options=${chrome_options}
     Maximize Browser Window
     Go To    ${URL}

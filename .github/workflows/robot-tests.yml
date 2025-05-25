@@ -18,6 +18,11 @@ jobs:
         with:
           chrome-version: '120.0.6099.109'
 
+      - name: Verify Chrome versions
+        run: |
+          google-chrome --version
+          chromedriver --version
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -30,7 +35,8 @@ jobs:
           export DISPLAY=:99
           Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
           robot \
-            --variable BROWSER:headlesschrome \
+            --variable BROWSER:chrome \
+            --variable OPTIONS:--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile \
             -d results \
             tests/login_test.robot
 
