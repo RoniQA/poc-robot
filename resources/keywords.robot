@@ -3,12 +3,11 @@ Library    SeleniumLibrary
 
 *** Keywords ***
 Abrir Navegador
-    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     FOR    ${option}    IN    @{OPTIONS.split(';')}
-        Call Method    ${chrome_options}    add_argument    ${option}
+        Call Method    ${options}    add_argument    ${option}
     END
-    Create WebDriver    Chrome    options=${chrome_options}
-    Maximize Browser Window
+    Create WebDriver    Chrome    options=${options}
     Go To    ${URL}
 
 Fazer Login
