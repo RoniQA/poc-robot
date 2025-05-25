@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.3 on win32)" generated="2025-05-25T18:15:02.018551" rpa="false" schemaversion="5">
+<suite id="s1" name="Login Test" source="C:\Users\ronie\Documents\Code\saucedemo-robot\tests\login_test.robot">
+<test id="s1-t1" name="Teste de Login Válido" line="6">
+<kw name="Abrir Navegador" owner="keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-05-25T18:15:02.374074" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-05-25T18:15:02.373900" elapsed="3.187079"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.561160" elapsed="0.028253"/>
+</kw>
+<status status="PASS" start="2025-05-25T18:15:02.373338" elapsed="3.216187"/>
+</kw>
+<kw name="Fazer Login" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-05-25T18:15:05.590301" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<arg>id=user-name</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.590022" elapsed="0.060426"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2025-05-25T18:15:05.650870" level="INFO">Typing password into text field 'id=password'.</msg>
+<msg time="2025-05-25T18:15:05.669213" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.650655" elapsed="0.045488"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-05-25T18:15:05.696430" level="INFO">Clicking button 'id=login-button'.</msg>
+<arg>id=login-button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.696285" elapsed="0.058413"/>
+</kw>
+<status status="PASS" start="2025-05-25T18:15:05.589791" elapsed="0.165022"/>
+</kw>
+<kw name="Validar Login com Sucesso" owner="keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Products</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.755246" elapsed="0.006602"/>
+</kw>
+<status status="PASS" start="2025-05-25T18:15:05.755055" elapsed="0.006879"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-05-25T18:15:05.762106" elapsed="2.105739"/>
+</kw>
+<status status="PASS" start="2025-05-25T18:15:02.372783" elapsed="5.495363"/>
+</test>
+<status status="PASS" start="2025-05-25T18:15:02.020260" elapsed="5.848456"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login Test" id="s1" pass="1" fail="0" skip="0">Login Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

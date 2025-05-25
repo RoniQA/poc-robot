@@ -1,0 +1,26 @@
+name: Robot Framework Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: |
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install webdriver-manager
+      - name: Run Robot Framework tests
+        run: |
+          robot -d results tests/login_test.robot
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Robot Results
+          path: results/
