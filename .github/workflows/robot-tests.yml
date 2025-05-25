@@ -13,16 +13,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Chrome and ChromeDriver
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: '120.0.6099.109'
-
-      - name: Verify Chrome versions
-        run: |
-          google-chrome --version
-          chromedriver --version
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -36,9 +26,9 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
           robot \
             --variable BROWSER:chrome \
-            --variable OPTIONS:"--no-sandbox --disable-dev-shm-usage --disable-gpu --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-profile" \
+            --variable OPTIONS:"--no-sandbox;--disable-dev-shm-usage" \
             -d results \
-            tests/login_test.robot
+            tests/
 
       - uses: actions/upload-artifact@v4
         if: always()

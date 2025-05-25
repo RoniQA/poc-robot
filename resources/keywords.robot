@@ -13,7 +13,9 @@ Abrir Navegador
     FOR    ${option}    IN    @{option_list}
         Call Method    ${chrome_options}    add_argument    ${option}
     END
-    Create WebDriver    Chrome    options=${chrome_options}
+    ${driver_path}=    Evaluate    sys.modules['webdriver_manager.chrome'].ChromeDriverManager().install().replace('\\\\', '/')    sys, webdriver_manager.chrome
+    ${service}=    Evaluate    sys.modules['selenium.webdriver.chrome.service'].Service(r"${driver_path}")    sys, selenium.webdriver
+    Create WebDriver    Chrome    service=${service}    options=${chrome_options}
     Maximize Browser Window
     Go To    ${URL}
 
