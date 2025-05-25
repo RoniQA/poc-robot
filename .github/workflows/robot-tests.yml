@@ -31,7 +31,6 @@ jobs:
           Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
           robot \
             --variable BROWSER:headlesschrome \
-            --variable OPTIONS:"--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile" \
             -d results \
             tests/login_test.robot
 
