@@ -14,15 +14,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install Chrome and ChromeDriver
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
-          # Remove existing symlinks if they exist
-          sudo rm -f /usr/bin/google-chrome
-          sudo rm -f /usr/bin/chromedriver
-          # Create new symlinks
-          sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
-          sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 'latest'
 
       - name: Install dependencies
         run: |
