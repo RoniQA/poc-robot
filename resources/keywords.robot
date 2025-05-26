@@ -4,7 +4,9 @@ Library    SeleniumLibrary
 *** Variables ***
 ${URL}          https://www.saucedemo.com/
 ${BROWSER}      chrome
-${OPTIONS}      --no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile
+${OPTIONS}      --headless=chrome;--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile
+${USERNAME}     standard_user
+${PASSWORD}     secret_sauce
 
 *** Keywords ***
 Abrir Navegador
